@@ -3,7 +3,7 @@ import store from "./store";
 import { Provider } from "react-redux";
 import { BrowserRouter } from 'react-router-dom';
 // import UploadImage from "./App/UploadImage/UploadImage";
-import PendingInvitation from "./App/PendingInvites/PendingInvitation";
+import PendingInvitation from "./App/PendingInvitation/PendingInvitation";
 
 // Parent Component
 class App extends Component {
