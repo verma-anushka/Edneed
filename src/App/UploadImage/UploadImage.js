@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { uploadImg } from "../../store/actions/uploadImage";
+import { uploadImg } from "../../store/actions/UploadImage/uploadImage";
   
 class UploadImage extends Component { 
   

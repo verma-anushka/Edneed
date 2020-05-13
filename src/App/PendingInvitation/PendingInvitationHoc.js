@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { connect } from "react-redux";
-import axios from "axios";
+// import axios from "axios";
 // import SocketIO from "../../Common/Socketio";
 
 import { MapStateToProps, MapDispatchToProps } from "./PendingInvitationMapDispatch";
