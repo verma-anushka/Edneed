@@ -1,3 +1,3 @@
-import SentInvitation from "./SentInvitation";
+import SentInvitation from "./SentInvitation.js";
 
 export default SentInvitation;

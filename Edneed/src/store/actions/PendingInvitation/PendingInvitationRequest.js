@@ -1,4 +1,3 @@
-// import { Component } from 'react';
 import axios from "axios";
 
 class PendingInvitationRequest {
@@ -6,17 +5,19 @@ class PendingInvitationRequest {
     constructor() {
         this.pendingInvitationRequest = {
             endpoint: {
-                receive:    'http://api.webunide.com/bubble?receiverid=::USERID::&$populate[]=owner&$sort=-createdAt&bubblestatus=1&$limit=4&$skip=::SKIP::',
-                sent:       'http://api.webunide.com/bubble?owner=::USERID::&$populate[]=receiverid&$sort=-createdAt&bubblestatus=1&$limit=4&$skip=::SKIP::',
+                receive:    'http://api.webunide.com/bubble?receiverid=::USERID::&$populate[]=owner&$sort=-createdAt&bubblestatus=1&$limit=::LIMIT::&$skip=::SKIP::',
+                sent:       'http://api.webunide.com/bubble?owner=::USERID::&$populate[]=receiverid&$sort=-createdAt&bubblestatus=1&$limit=::LIMIT::&$skip=::SKIP::',
                 operation:  'http://api.webunide.com/bubble/::BUBBLE_ID::'
             }
         }
     }
 
-    findSentInvitation = (userId, skip=0) => {
-
+    findSentInvitation = (userId, limit, skip=0) => {
         return axios.get(
-            this.pendingInvitationRequest.endpoint.sent.replace('::USERID::',userId).replace('::SKIP::', skip),
+            this.pendingInvitationRequest.endpoint.sent.replace('::USERID::',userId).replace('::LIMIT::', limit).replace('::SKIP::', skip),
+            // {
+            //     headers:this.getApiheader()
+            // }
             {
                 headers: {
                     'Content-Type': 'application/json',
@@ -24,12 +25,14 @@ class PendingInvitationRequest {
                 }
             }
         )
-    }
+    } 
 
-    findReceiveInvitation = (userId, skip=0) => {
-
+    findReceiveInvitation = (userId, limit, skip=0) => {
         return axios.get(
-            this.pendingInvitationRequest.endpoint.receive.replace('::USERID::',userId).replace('::SKIP::', skip),
+            this.pendingInvitationRequest.endpoint.receive.replace('::USERID::',userId).replace('::LIMIT::', limit).replace('::SKIP::', skip),
+            // {
+            //     headers:this.getApiheader()
+            // }
             {
                 headers: {
                     'Content-Type': 'application/json',
@@ -40,11 +43,13 @@ class PendingInvitationRequest {
     }
 
     AcceptInvitation = id => {
-
-        return axios.patch( // patch, not put!
+        return axios.patch(
             this.pendingInvitationRequest.endpoint.operation.replace('::BUBBLE_ID::', id), {
-                bubblestatus: 2 // for connection
+                bubblestatus: 2
             }, 
+            // {
+            //     headers:this.getApiheader()
+            // }
             {
                 headers: {
                     'Content-Type': 'application/json',
@@ -55,9 +60,11 @@ class PendingInvitationRequest {
     }
 
     RejectInvitation = id => {
-
         return axios.delete(
             this.pendingInvitationRequest.endpoint.operation.replace('::BUBBLE_ID::', id),
+            // {
+            //     headers:this.getApiheader()
+            // }
             {
                 headers: {
                     'Content-Type': 'application/json',
@@ -68,6 +75,5 @@ class PendingInvitationRequest {
     }
 }
 
-export default new PendingInvitationRequest(); // returning a new object of the class
+export default new PendingInvitationRequest();
 
-//  ::VARIABLE_NAME:: - to be replaced

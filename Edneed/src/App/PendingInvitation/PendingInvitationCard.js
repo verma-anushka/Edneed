@@ -1,5 +1,3 @@
-// CARD ITEM COMPONENT !
-
 import React from 'react';
 import dummy from '../../assets/images/dummy_cover_photo.jpg';
 
@@ -49,7 +47,7 @@ PendingInvitationCard.defaultProps = {
     profile: undefined,
     name: "NA",
     requestId: undefined,
-    invitationType: "receive"
+    invitationType: "sent"
 }
 
 export default PendingInvitationCard;

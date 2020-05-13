@@ -1,7 +1,6 @@
 import { LoadInvitation, LoadInvitationMore, AcceptInvitation, RejectInvitation } from "../../store/actions/PendingInvitation";
 
 export const MapStateToProps = state => {
-    // console.log(state);
     return{
         pendingInvitation: state.pendingInvitation,
         // user:state.user
@@ -11,10 +10,11 @@ export const MapStateToProps = state => {
 export const MapDispatchToProps = dispatch => {
 
     return {
-        findInvitation   : (invitationType, userId) => dispatch(LoadInvitation(invitationType,userId)),
-        findInvitationMore : (invitationType, userId, skip=0) => dispatch(LoadInvitationMore(invitationType, userId, skip)),
-        AcceptInvitation : (type, userId) => dispatch(AcceptInvitation(type, userId)),
-        RejectInvitation : (type, userId) => dispatch(RejectInvitation(type, userId)),
+        findInvitation      : (invitationType, limit, userId) => dispatch(LoadInvitation(invitationType, limit, userId)),
+        findInvitationMore  : (invitationType, limit, userId, skip) => dispatch(LoadInvitationMore(invitationType, limit, userId, skip)),
+        AcceptInvitation    : (type, id, userId, limit) => dispatch(AcceptInvitation(type, id, userId, limit)),
+        RejectInvitation    : (type, id, userId, limit) => dispatch(RejectInvitation(type, id, userId, limit))
     }
 }
 
+ 

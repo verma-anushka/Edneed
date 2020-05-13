@@ -1,3 +1,3 @@
-import ReceiveInvitation from "./ReceiveInvitation";
+import ReceiveInvitation from "./ReceiveInvitation.js";
 
 export default ReceiveInvitation;

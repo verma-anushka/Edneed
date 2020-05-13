@@ -1,5 +1,3 @@
-// SHOW INVITES COMPONENT !
-
 import React from 'react';
 import { useSelector } from "react-redux";
 
@@ -15,7 +13,6 @@ import "./css/pendinginvitation.css";
 export default () => {
     
     let { sentCount, receiveCount } = useSelector(state => {
-        // console.log(state);
         return {
             sentCount: state.pendingInvitation.sent.total,
             receiveCount: state.pendingInvitation.receive.total
