@@ -29,6 +29,7 @@ class Applications extends Component {
     onTabSelect = (tab) => {
         this.setState({ selectedTab: tab });
         this.props.getApplications(type, tab, id, limit);
+        this.props.history.push(`/applications/${tab}`);
     }
 
     render() {
