@@ -5,7 +5,8 @@ import { combineReducers } from "redux";
 // import pricingReducer from "./pricing";
 // import followedQuestionsReducer from "./questions/followedquestions";
 // import savedQuestionsReducer from "./questions/savedquestions";
-import applicationsReducer from "./applications";
+// import applicationsReducer from "./applications";
+import accountSettingsReducer from "./accountSettings";
 
 export default combineReducers({
     
@@ -14,7 +15,8 @@ export default combineReducers({
     // pricing: pricingReducer,
     // followQuestions: followedQuestionsReducer,
     // savedQuestions: savedQuestionsReducer,
-    applications: applicationsReducer
+    // applications: applicationsReducer,
+    accountSettings: accountSettingsReducer
 
 });
 
