@@ -19,10 +19,10 @@ class AccountSettings extends Component {
         return (
             <Tab.Container defaultActiveKey={this.state.selectedTab} onSelect={key => this.onTabSelect(key)}>
                 <Row>
-                    <Col lg={{ offset: 1, span: 2 }} md={{ offset: 1, span: 2 }} sm={{ offset: 1, span: 2 }}>
+                    <Col lg={2} md={3} sm={3}>
                         <AccountSettingsTabLinks selectedTab={this.state.selectedTab} />
                     </Col>
-                    <Col lg={7} md={7} sm={8}>
+                    <Col lg={6} md={9} sm={9}>
                         <AccountSettingsTabContent />
                     </Col>
                 </Row>

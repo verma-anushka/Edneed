@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 
-import { Form, Button, Container, Alert, Spinner } from "react-bootstrap";
+import { Row, Col, Form, Button, Container, Alert, Spinner } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faCheckCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
@@ -32,10 +32,13 @@ class ChangeLocation extends Component {
     const { location } = this.props.accountsettings;
     return (
       <Container>
+        <h4 className="pt-3 pb-3" style={{ borderBottom: "1px #ddd solid" }} >Change Location</h4>
             <Form onSubmit={this.onSubmit}>
-                <Form.Group>
-                    <Form.Label>New Location</Form.Label>
-                    <Form.Control type="text" placeholder="Enter the new location" onChange={this.onChange} />
+                <Form.Group as={Row}>
+                    <Form.Label column md="4" sm="4">New Location</Form.Label>
+                    <Col md="8" sm="8">
+                      <Form.Control type="text" placeholder="Enter the new location" onChange={this.onChange} />
+                    </Col>
                 </Form.Group>
 
                 {
@@ -45,7 +48,7 @@ class ChangeLocation extends Component {
                       </div>
                   :
                     <div className="text-center mb-2" >
-                      <Button variant="outline-success" type="submit"> 
+                      <Button variant="outline-success" type="submit" className="mb-3"> 
                         Update 
                         {" "}
                         <FontAwesomeIcon icon={ faEdit } />
@@ -55,7 +58,7 @@ class ChangeLocation extends Component {
             </Form>
         {
           location.success ? 
-            <Alert variant="success" className="text-center">
+            <Alert variant="success" className="text-center mb-2">
               { location.success }
               {" "}
               <FontAwesomeIcon icon={ faCheckCircle }  className="text-center" style={{ float:"right", height:"1.5em", width:"1.5em" }} />
@@ -65,7 +68,7 @@ class ChangeLocation extends Component {
         }
         {
           location.error ? 
-            <Alert variant="danger" className="text-center">
+            <Alert variant="danger" className="text-center mb-2">
               { location.error }
               {" "}
               <FontAwesomeIcon icon={ faTimesCircle } style={{ float:"right", height:"1.5em", width:"1.5em" }} />

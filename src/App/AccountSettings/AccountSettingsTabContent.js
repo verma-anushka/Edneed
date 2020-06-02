@@ -7,7 +7,7 @@ import ChangeLocation from "./AccountSettingsContent/ChangeLocation";
 const AccountSettingsTabContent = () => {
 
         return (
-            <Tab.Content>
+            <Tab.Content className="shadow-sm" >
                 <Tab.Pane eventKey="password">
                     <ChangePassword />
                 </Tab.Pane>

@@ -7,13 +7,13 @@ import { faUnlockAlt, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 const AccountSettingsTabLinks = props => {
 
     return (
-        <Nav variant="pills" className="flex-column">
-            
+        <Nav variant="pills" className="flex-column shadow-sm">
             <Nav.Item>
                 <Nav.Link 
                     eventKey="password" 
                     style={{ 
                         backgroundColor: props.selectedTab === "password" ? "#96c946" : "#fff", 
+                        borderRadius: "0"
                     }}
                 >
                     Change Password 
@@ -27,6 +27,7 @@ const AccountSettingsTabLinks = props => {
                     eventKey="location"
                     style={{ 
                         backgroundColor: props.selectedTab === "location" ? "#96c946" : "#fff", 
+                        borderRadius: "0"
                     }}
                 >
                     Change Location 

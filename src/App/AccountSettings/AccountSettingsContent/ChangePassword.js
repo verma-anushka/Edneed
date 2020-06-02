@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 
-import { Form, Button, Container, Spinner, Alert } from "react-bootstrap";
+import { Form, Button, Container, Spinner, Alert, Row, Col } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faCheckCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
@@ -40,21 +40,29 @@ class ChangePassword extends Component {
     const { password } = this.props.accountsettings;
     return (
       <Container>
+        <h4 className="pt-3 pb-3" style={{ borderBottom: "1px #ddd solid" }} >Change Password</h4>
         <Form onSubmit={this.onFormSubmit}>
-            <Form.Group>
-                <Form.Label>Password</Form.Label>
-                <Form.Control type="password" name="oldpassword" value={this.state.password} required={true} placeholder="Enter your current password" onChange={this.onInputChange} />
+            <Form.Group as={Row}>
+                <Form.Label column md="4" sm="4">Password</Form.Label>
+                <Col md="8" sm="8">
+                  <Form.Control type="password" name="oldpassword" value={this.state.password} required={true} placeholder="Enter your current password" onChange={this.onInputChange} />
+                </Col>
             </Form.Group>
 
-            <Form.Group>
-                <Form.Label>New password</Form.Label>
-                <Form.Control type="password" name="newpassword" value={this.state.newpassword} required={true} placeholder="Enter new password" onChange={this.onInputChange} />
+            <Form.Group as={Row}>
+                <Form.Label column md="4" sm="4">New password</Form.Label>
+                <Col md="8" sm="8">
+                  <Form.Control type="password" name="newpassword" value={this.state.newpassword} required={true} placeholder="Enter new password" onChange={this.onInputChange} />
+                </Col>
             </Form.Group>
 
-            <Form.Group>
-                <Form.Label>Confirm new password</Form.Label>
-                <Form.Control type="password" name="confirmnewpassword" value={this.state.confirmnewpassword} required={true} placeholder="Confirm new password" onChange={this.onInputChange} />
+            <Form.Group as={Row}>
+                <Form.Label column md="4" sm="4">Confirm new password</Form.Label>
+                <Col md="8" sm="8">
+                  <Form.Control type="password" name="confirmnewpassword" value={this.state.confirmnewpassword} required={true} placeholder="Confirm new password" onChange={this.onInputChange} />
+                </Col>
             </Form.Group>
+            
             {
               this.state.error.length > 0 && 
                 <Alert variant="danger">{this.state.error}</Alert>
@@ -66,7 +74,7 @@ class ChangePassword extends Component {
                   </div>
               :
                 <div className="text-center mb-2" >
-                  <Button variant="outline-success" type="submit"> 
+                  <Button variant="outline-success" type="submit" className="mb-3"> 
                     Update 
                     {" "}
                     <FontAwesomeIcon icon={ faEdit } />
