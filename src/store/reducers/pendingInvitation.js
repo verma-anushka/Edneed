@@ -4,22 +4,22 @@ const PENDING_INVITATION_STATES = {
     sent: {
         loading: false,
         more: false,
+        loadingmore: false,
         skip: 0,
         total: 0,
         data: [],
         acceptLoading: false,
-        deleteLoading: false,
-        loadingmore: false
+        deleteLoading: false
     },
     receive: {
         loading: false,
         more: false,
+        loadingmore: false,
         skip: 0,
         total: 0,
         data: [],
         acceptLoading: false,
-        deleteLoading: false,
-        loadingmore: false
+        deleteLoading: false
     }
 }
 

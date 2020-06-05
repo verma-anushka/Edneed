@@ -1,4 +1,4 @@
-import { UpdateUserDetails, ChangePassword } from "../../store/actions/accountSettings";
+import { UpdateUserProfile, ChangePassword } from "../../store/actions/accountSettings";
 
 export const MapStateToProps = state => {
     return {
@@ -9,7 +9,7 @@ export const MapStateToProps = state => {
 export const MapDispatchToProps = dispatch => {
 
     return {
-        updateUserDetails : (id, newdetails) => dispatch(UpdateUserDetails(id, newdetails)),
+        updateUserProfile : (id, userdetails) => dispatch(UpdateUserProfile(id, userdetails)),
         changePassword    : (id, email, oldpassword, newpassword) => dispatch(ChangePassword(id, email, oldpassword, newpassword))
     }
 }

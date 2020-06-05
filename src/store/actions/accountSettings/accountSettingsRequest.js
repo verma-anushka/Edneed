@@ -2,12 +2,9 @@ import axios from "axios";
 
 class AccountSettingsRequest {
 
-    updateUserDetails = (id, property, value) => {
+    updateUserProfile = (id, newuserprofile) => {
         return axios.patch(
-            `http://api.webunide.com/user/${id}`,
-            {
-                [property]: value
-            },
+            `http://api.webunide.com/user/${id}`, newuserprofile,
             {
                 headers: {
                     'Content-Type': 'application/json',

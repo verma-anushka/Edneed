@@ -7,7 +7,7 @@ import AccountSettingsTabContent from "./AccountSettingsTabContent";
 class AccountSettings extends Component {
 
     state= {
-        selectedTab: "password"
+        selectedTab: "userprofile"
     }
 
     onTabSelect = (tab) => {

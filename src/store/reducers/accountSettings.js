@@ -6,7 +6,7 @@ const ACCOUNT_SETTINGS_INITIAL_STATE = {
         success: "",
         error: ""
     },
-    location: {
+    userprofile: {
         loading: false,
         success: "",
         error: ""
