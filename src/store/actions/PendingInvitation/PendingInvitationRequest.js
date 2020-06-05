@@ -5,8 +5,8 @@ class PendingInvitationRequest {
     constructor() {
         this.pendingInvitationRequest = {
             endpoint: {
-                receive:    'http://api.webunide.com/bubble?receiverid=::USERID::&$populate[]=owner&$sort=-createdAt&bubblestatus=1&$limit=::LIMIT::&$skip=::SKIP::',
-                sent:       'http://api.webunide.com/bubble?owner=::USERID::&$populate[]=receiverid&$sort=-createdAt&bubblestatus=1&$limit=::LIMIT::&$skip=::SKIP::',
+                receive:    'http://api.webunide.com/bubble?receiverid=::USERID::&$populate[]=owner&$sort=-createdAt&bubblestatus=2&$limit=::LIMIT::&$skip=::SKIP::',
+                sent:       'http://api.webunide.com/bubble?owner=::USERID::&$populate[]=receiverid&$sort=-createdAt&bubblestatus=2&$limit=::LIMIT::&$skip=::SKIP::',
                 operation:  'http://api.webunide.com/bubble/::BUBBLE_ID::'
             }
         }

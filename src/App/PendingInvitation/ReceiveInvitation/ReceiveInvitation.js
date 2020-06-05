@@ -20,6 +20,8 @@ class ReceiveInvitation extends Component {
         return (
             <PendingInvitationHoc invitationType={invitationType} limit={limit} render={({ invitation, LoadMore, accept, reject }) => {
 
+                console.log(invitation);
+                
                 return <Container> {
                     invitation.loading ?
                         <div className="text-center p-3">

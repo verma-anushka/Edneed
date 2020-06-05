@@ -11,7 +11,7 @@ class PricingHoc extends Component {
 
     render() {
         return this.props.render({
-            pricing: this.props.pricing[this.props.pricingType],
+            pricing: this.props.pricing[this.props.pricingType]
         })
     }
 
