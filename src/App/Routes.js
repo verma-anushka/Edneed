@@ -3,8 +3,11 @@ import { Switch, Route } from "react-router-dom";
 
 // components
 
+
+import Rating from "./Common/Rating";
+
 // import Report from "./Report";
-import AccountSettings from "./AccountSettings";
+// import AccountSettings from "./AccountSettings";
 
 // import Applications from "./Applications";
 
@@ -24,8 +27,10 @@ const Routes = () => {
     return (
         <div className="" style={{ margin:"25px" }}>
             <Switch>
-                {/* <Route path="/" component={ Report } /> */}
-                <Route path="/" component={ AccountSettings } />
+
+                <Route path="/" component={ Rating } />
+                {/* <Route path="/report" component={ Report } /> */}
+                {/* <Route path="/settings" component={ AccountSettings } /> */}
                 {/* <Route path="/applications" component={ Applications } /> */}
                 {/* <Route exact path="/followed" component={ FollowedQuestions } /> */}
                 {/* <Route exact path="/saved" component={ SavedQuestions } /> */}

@@ -31,16 +31,19 @@
 // export default store;
 
 import { createStore, applyMiddleware, compose } from "redux";
+// import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 import reduxThunk from "redux-thunk";
 import rootReducer from "./reducers";
+
 
 export function configureStore() {
   const store = createStore(
     rootReducer,
+    // composeWithDevTools(
     compose(
       applyMiddleware(reduxThunk),
       // window.devToolsExtension ? window.devToolsExtension() : f => f
-      window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+      // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
     )
   );
 

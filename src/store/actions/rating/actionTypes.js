@@ -1,0 +1,9 @@
+export const ratingActionTypes = {
+    
+    RATING_LOADING      : "RATING_LOADING",
+    RATING_LOADED       : "RATING_LOADED",
+    RATING_LOADING_MORE : "RATING_LOADING_MORE",
+    RATING_MORE_LOADED  : "RATING_MORE_LOADED",
+    RATING_ERRORS       : "RATING_ERRORS"
+
+}

@@ -6,8 +6,9 @@ import { combineReducers } from "redux";
 // import followedQuestionsReducer from "./questions/followedquestions";
 // import savedQuestionsReducer from "./questions/savedquestions";
 // import applicationsReducer from "./applications";
-import accountSettingsReducer from "./accountSettings";
-import reportReducer from "./report";
+// import accountSettingsReducer from "./accountSettings";
+// import reportReducer from "./report";
+import ratingReducer from "./rating";
 
 export default combineReducers({
     
@@ -17,7 +18,9 @@ export default combineReducers({
     // followQuestions: followedQuestionsReducer,
     // savedQuestions: savedQuestionsReducer,
     // applications: applicationsReducer,
-    accountSettings: accountSettingsReducer,
-    report: reportReducer
+    // accountSettings: accountSettingsReducer,
+    // report: reportReducer,
+    rating: ratingReducer
+
 });
 
