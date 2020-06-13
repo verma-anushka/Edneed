@@ -64,7 +64,7 @@ export const GetMoreRating = (kind, ref_id, limit, skip) => {
                  return dispatch({
                     type: ratingActionTypes.RATING_ERRORS,
                     payload: {
-                        error: `Oops! An error occurred. Please try again!`
+                        error: `An error occurred. Please try again!`
                     }
                 })
             }) 
@@ -73,7 +73,7 @@ export const GetMoreRating = (kind, ref_id, limit, skip) => {
 }
 
 
-export const SetRating = (kind, rate, user_id, ref_id) => {
+export const SetRating = (kind, rate, review, user_id, ref_id, limit) => {
 
     return dispatch => {
         dispatch({
@@ -82,12 +82,11 @@ export const SetRating = (kind, rate, user_id, ref_id) => {
                 status: true
             }
         });
-
         RatingRequest
-            .setRating(kind, rate, user_id, ref_id)
+            .setRating(kind, rate, review, user_id, ref_id)
             .then(ratingresponse => {
                 RatingRequest
-                    .getRating(kind, ref_id)
+                    .getRating(kind, ref_id, limit)
                     .then(ratings => {
                         return dispatch({
                             type: ratingActionTypes.RATING_LOADED,
@@ -103,7 +102,7 @@ export const SetRating = (kind, rate, user_id, ref_id) => {
                         return dispatch({
                             type: ratingActionTypes.RATING_ERRORS,
                             payload: {
-                                error: `Oops! An error occurred. Please try again!`
+                                error: `An error occurred. Please try again!`
                             }
                         })
                     }) 

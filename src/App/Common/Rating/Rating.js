@@ -6,8 +6,8 @@ import RatingList from "./RatingList/RatingList";
 import RatingForm from "./RatingForm";
 
 const kind="course";
-const user_id="5ecb9ed670e1ef395d63113a";
-const ref_id="5de7e9b37c1ac96dd225b47f";
+const user_id="5ec7d14370e1ef395d63112a";
+const ref_id="5de7e5bd7c1ac96dd225b466";
 const limit=2;
 
 class Rating extends Component {
@@ -22,6 +22,5 @@ class Rating extends Component {
     }
 
 }
-
 
 export default Rating;

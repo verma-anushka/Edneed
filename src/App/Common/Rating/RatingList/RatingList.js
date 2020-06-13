@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { Button, Spinner } from "react-bootstrap";
 import { string, oneOf } from "prop-types";
 
-
 import RatingCard from "./RatingCard";
 import { MapStateToProps, MapDispatchToProps } from "../RatingMapDispatch";
 
@@ -20,9 +19,7 @@ class RatingList extends Component {
         this.props.getMoreRating(kind, ref_id, limit, skip);
     }
 
-
     render() {
-
         const ratings = this.props.ratingstate;
         return (
             <React.Fragment>
@@ -42,6 +39,7 @@ class RatingList extends Component {
                                         username={ratingItem.user_fullName}
                                         userphoto={ratingItem.user_photo}
                                         rate={ratingItem.rate}
+                                        review={ratingItem.review}
                                     />
                                 )}
                             </>
@@ -65,7 +63,6 @@ class RatingList extends Component {
             </React.Fragment>
         )
     }
-
 }
 
 RatingList.propTypes = {
