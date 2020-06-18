@@ -8,7 +8,9 @@ import { combineReducers } from "redux";
 // import applicationsReducer from "./applications";
 // import accountSettingsReducer from "./accountSettings";
 // import reportReducer from "./report";
-import ratingReducer from "./rating";
+// import ratingReducer from "./rating";
+import mentionsReducer from "./mentions";
+
 
 export default combineReducers({
     
@@ -20,7 +22,7 @@ export default combineReducers({
     // applications: applicationsReducer,
     // accountSettings: accountSettingsReducer,
     // report: reportReducer,
-    rating: ratingReducer
+    users: mentionsReducer
 
 });
 

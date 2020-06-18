@@ -3,9 +3,9 @@ import { Switch, Route } from "react-router-dom";
 
 // components
 
+import Mentions from "./Common/Mentions";
 
-import Rating from "./Common/Rating";
-
+// import Rating from "./Common/Rating";
 // import Report from "./Report";
 // import AccountSettings from "./AccountSettings";
 
@@ -20,18 +20,16 @@ import Rating from "./Common/Rating";
 
 const Routes = () => {
 
-    // onImageUpload(imageData) {
-    //   console.log(imageData);
-    // }
-
     return (
         <div className="" style={{ margin:"25px" }}>
+
             <Switch>
 
-                <Route path="/" component={ Rating } />
-                {/* <Route path="/report" component={ Report } /> */}
-                {/* <Route path="/settings" component={ AccountSettings } /> */}
-                {/* <Route path="/applications" component={ Applications } /> */}
+                <Route exact path="/" component={ Mentions } />
+                {/* <Route exact path="/" component={ Rating } /> */}
+                {/* <Route exact path="/report" component={ Report } /> */}
+                {/* <Route exact path="/settings" component={ AccountSettings } /> */}
+                {/* <Route exact path="/applications" component={ Applications } /> */}
                 {/* <Route exact path="/followed" component={ FollowedQuestions } /> */}
                 {/* <Route exact path="/saved" component={ SavedQuestions } /> */}
                 {/* <Route exact path="/pricing" component={Pricing} /> */}
@@ -41,5 +39,9 @@ const Routes = () => {
         </div>
     );
 };
+
+    // onImageUpload(imageData) {
+    //   console.log(imageData);
+    // }
 
 export default Routes;
