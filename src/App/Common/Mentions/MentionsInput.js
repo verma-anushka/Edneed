@@ -8,6 +8,7 @@ import "./mentions.css"
 import { MapStateToProps, MapDispatchToProps } from "./MentionsMapDispatch";
 
 const limit=1000;
+const postid="5eea16ff4408001b6ca9de32"
 
 class Mentions extends Component {
 
@@ -15,12 +16,14 @@ class Mentions extends Component {
     super();
     this.state = {
       keyword: '',
+      text: ''
     };
   }
 
   onSubmit = (event) => {
     event.preventDefault();
     // console.log(this.state.keyword);
+    this.props.saveanswer(postid, this.state.keyword);
   }
 
   getUsers = (si) => {
@@ -69,8 +72,8 @@ class Mentions extends Component {
                 <Mention
                     trigger="@"
                     data={allusers}
+                    markup="@[__display__](hash:__id__)"
                     className="mentions__mention"
-
                 />
             </MentionsInput>
             <Button variant="outline-success" type="submit" className="mb-3"> 

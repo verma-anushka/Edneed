@@ -3,8 +3,7 @@ import { MentionsActionTypes } from "../actions/mentions/actionTypes";
 const MENTIONS_INITIAL_STATE = {
     loading     : false,
     data        : [],
-    total       : 0,
-    error       : false,
+    error       : false
 }
 
 export default (
@@ -13,25 +12,48 @@ export default (
     ) => {
     switch (type) {
         
-        case MentionsActionTypes.USERS_LOADING:
+        case MentionsActionTypes.MENTIONS_LOADING:
             return({
                 ...state,
-                loading: payload.status,
+                data    : [],
+                loading : payload.status,
             })
 
-        case MentionsActionTypes.USERS_LOADED:
+        case MentionsActionTypes.MENTIONS_LOADED:
+            console.log(payload.data);
+            
             return({
                 ...state,
                 loading : false,
                 data    : payload.data,
             })
 
-        case MentionsActionTypes.USERS_ERRORS:
+        case MentionsActionTypes.MENTIONS_ERRORS:
             return({
                 ...state,
                 loading : false,
                 error   : payload.error
             })
+
+        // case MentionsActionTypes.SAVE_ANS_LOADING:
+        //     return({
+        //         ...state,
+        //         loading: payload.status,
+        //     })
+
+        // case MentionsActionTypes.SAVE_ANS_LOADED:
+        //     return({
+        //         ...state,
+        //         loading : false,
+        //         data    : payload.data,
+        //     })
+
+        // case MentionsActionTypes.SAVE_ANS_ERROR:
+        //     return({
+        //         ...state,
+        //         loading : false,
+        //         error   : payload.error
+        //     })
 
         default:
             return state;

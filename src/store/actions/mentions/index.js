@@ -1,22 +1,22 @@
 import MentionsRequest from "./mentionsRequest";
 import { MentionsActionTypes } from "./actionTypes";
 
-export const GetUsers = (name, limit) => {
+export const GetUsers = (searchkey, limit) => {
 
 return dispatch => {
 
     dispatch({
-        type    : MentionsActionTypes.USERS_LOADING,
+        type    : MentionsActionTypes.MENTIONS_LOADING,
         payload : { status: true }
     })
 
     MentionsRequest
-        .getUsers(name, limit) 
+        .getUsers(searchkey, limit) 
         .then(users => {
-            // console.log(name);
-            // console.log(users.data.data);
+            console.log(searchkey);
+            console.log(users.data.data);
             return dispatch ({
-                type    : MentionsActionTypes.USERS_LOADED,
+                type    : MentionsActionTypes.MENTIONS_LOADED,
                 payload : {
                     data: users.data.data
                 }
@@ -24,7 +24,40 @@ return dispatch => {
         })
         .catch(err => {
             return dispatch({
-                type:    MentionsActionTypes.USERS_ERROR,
+                type:    MentionsActionTypes.MENTIONS_ERROR,
+                payload: {
+                    error: err.response
+                }
+            })
+        })
+}
+
+}
+
+export const SaveAnswer = (post, text) => {
+
+return dispatch => {
+
+    dispatch({
+        type    : MentionsActionTypes.MENTIONS_LOADING,
+        payload : { status: true }
+    })
+
+    MentionsRequest
+        .saveAnswer(post, text) 
+        .then(savedanswer => {
+            console.log(savedanswer);
+
+            return dispatch ({
+                type    : MentionsActionTypes.MENTIONS_LOADED,
+                payload : {
+                    data: savedanswer.data.data
+                }
+            })
+        })
+        .catch(err => {
+            return dispatch({
+                type:    MentionsActionTypes.MENTIONS_ERROR,
                 payload: {
                     error: err.response
                 }
