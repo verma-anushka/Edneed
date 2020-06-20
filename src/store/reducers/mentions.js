@@ -1,9 +1,10 @@
 import { MentionsActionTypes } from "../actions/mentions/actionTypes";
 
 const MENTIONS_INITIAL_STATE = {
-    loading     : false,
-    data        : [],
-    error       : false
+    loading : false,
+    data    : [],
+    text    : "",
+    error   : false
 }
 
 export default (
@@ -15,18 +16,25 @@ export default (
         case MentionsActionTypes.MENTIONS_LOADING:
             return({
                 ...state,
-                data    : [],
+                // data    : [],
                 loading : payload.status,
             })
 
         case MentionsActionTypes.MENTIONS_LOADED:
-            console.log(payload.data);
-            
+            // console.log(payload.data);
             return({
                 ...state,
                 loading : false,
-                data    : payload.data,
+                data    : payload.data
             })
+
+        case MentionsActionTypes.SAVE_ANS_LOADED:            
+            return({
+                ...state,
+                loading : false,
+                text    : payload.text
+            })
+
 
         case MentionsActionTypes.MENTIONS_ERRORS:
             return({

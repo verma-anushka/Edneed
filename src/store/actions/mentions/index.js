@@ -13,8 +13,8 @@ return dispatch => {
     MentionsRequest
         .getUsers(searchkey, limit) 
         .then(users => {
-            console.log(searchkey);
-            console.log(users.data.data);
+            // console.log(searchkey);
+            // console.log(users.data.data);
             return dispatch ({
                 type    : MentionsActionTypes.MENTIONS_LOADED,
                 payload : {
@@ -46,12 +46,11 @@ return dispatch => {
     MentionsRequest
         .saveAnswer(post, text) 
         .then(savedanswer => {
-            console.log(savedanswer);
-
+            // console.log(savedanswer);
             return dispatch ({
-                type    : MentionsActionTypes.MENTIONS_LOADED,
+                type    : MentionsActionTypes.SAVE_ANS_LOADED,
                 payload : {
-                    data: savedanswer.data.data
+                    text: savedanswer.data.text
                 }
             })
         })

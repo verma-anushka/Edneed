@@ -43,10 +43,11 @@ class Mentions extends Component {
 
   func = (e) => {
 
-      var si = this.state.keyword.search("@");
-      if(si !== -1) {  
-        this.getUsers(si);
-      }
+    var si = this.state.keyword.indexOf("@");
+    while(si !== -1) {  
+      this.getUsers(si);
+      si = this.state.keyword.indexOf("@", si+1);
+    }
   }
 
   render() {
@@ -56,7 +57,7 @@ class Mentions extends Component {
       display: user.fullName
     }));
 
-    console.log(this.state.keyword);
+    // console.log(this.state.keyword);
     // console.log(allusers);
 
     return (
@@ -79,7 +80,6 @@ class Mentions extends Component {
             <Button variant="outline-success" type="submit" className="mb-3"> 
                 Post 
                 {" "}
-                {/* <FontAwesomeIcon icon={ faEdit } /> */}
             </Button>
       </Form>
     );
