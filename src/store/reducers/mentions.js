@@ -1,10 +1,23 @@
 import { MentionsActionTypes } from "../actions/mentions/actionTypes";
 
 const MENTIONS_INITIAL_STATE = {
-    loading : false,
-    data    : [],
-    text    : "",
-    error   : false
+
+    users: {
+        loading : false,
+        data    : [],
+        error   : false
+    },
+    saveanswer: {
+        loading : false,
+        text    : "",
+        error   : false
+    },
+    getanswers: {
+        loading : false,
+        data : [],
+        error   : false
+    }
+    
 }
 
 export default (
@@ -16,52 +29,86 @@ export default (
         case MentionsActionTypes.MENTIONS_LOADING:
             return({
                 ...state,
-                // data    : [],
-                loading : payload.status,
+                [payload.type]: {
+                    ...state[payload.type],
+                    loading: payload.status
+                }
             })
 
         case MentionsActionTypes.MENTIONS_LOADED:
-            // console.log(payload.data);
+            return ({
+                ...state,
+                [payload.type]:{
+                    ...state[payload.type],
+                    loading : false,
+                    data    : payload.data
+                }
+            })     
+
+        case MentionsActionTypes.MENTIONS_ERROR:
+            return ({
+                ...state,
+                [payload.type]:{
+                    ...state[payload.type],
+                    loadingmore: payload.status
+                }
+            })  
+
+        case MentionsActionTypes.SAVE_ANS_LOADING:
             return({
                 ...state,
-                loading : false,
-                data    : payload.data
+                [payload.type]: {
+                    ...state[payload.type],
+                    loading: payload.status
+                }
             })
 
         case MentionsActionTypes.SAVE_ANS_LOADED:            
+            return ({
+                ...state,
+                [payload.type]:{
+                    ...state[payload.type],
+                    loading : false,
+                    text    : payload.text
+                }
+            })  
+
+        case MentionsActionTypes.SAVE_ANS_ERROR:
+            return ({
+                ...state,
+                [payload.type]:{
+                    ...state[payload.type],
+                    loadingmore: payload.status
+                }
+            })  
+
+        case MentionsActionTypes.GET_ANS_LOADING:
             return({
                 ...state,
-                loading : false,
-                text    : payload.text
+                [payload.type]: {
+                    ...state[payload.type],
+                    loading: payload.status
+                }
             })
 
-
-        case MentionsActionTypes.MENTIONS_ERRORS:
-            return({
+        case MentionsActionTypes.GET_ANS_LOADED:  
+            return ({
                 ...state,
-                loading : false,
-                error   : payload.error
-            })
-
-        // case MentionsActionTypes.SAVE_ANS_LOADING:
-        //     return({
-        //         ...state,
-        //         loading: payload.status,
-        //     })
-
-        // case MentionsActionTypes.SAVE_ANS_LOADED:
-        //     return({
-        //         ...state,
-        //         loading : false,
-        //         data    : payload.data,
-        //     })
-
-        // case MentionsActionTypes.SAVE_ANS_ERROR:
-        //     return({
-        //         ...state,
-        //         loading : false,
-        //         error   : payload.error
-        //     })
+                [payload.type]:{
+                    ...state[payload.type],
+                    loading : false,
+                    data    : payload.data
+                }
+            })  
+        
+        case MentionsActionTypes.GET_ANS_ERROR:
+            return ({
+                ...state,
+                [payload.type]:{
+                    ...state[payload.type],
+                    loadingmore: payload.status
+                }
+            })  
 
         default:
             return state;
