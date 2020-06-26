@@ -1,5 +1,7 @@
 .mentions {
   margin: 1em 0;
+  /* min-height: 50px;
+  border: inset; */
 }
 
 .mentions--singleLine .mentions__control {

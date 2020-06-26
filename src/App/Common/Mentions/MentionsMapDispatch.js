@@ -1,4 +1,4 @@
-import { GetUsers, SaveAnswer } from "../../../store/actions/mentions";
+import { GetUsers, SaveAnswer, GetAnswers } from "../../../store/actions/mentions";
 
 export const MapStateToProps = state => {
     return{
@@ -9,6 +9,7 @@ export const MapStateToProps = state => {
 export const MapDispatchToProps = dispatch => {
     return {
         userslist  : (name, limit) => dispatch(GetUsers(name, limit)),
-        saveanswer : (postid, text) => dispatch(SaveAnswer(postid, text))
+        saveanswer : (postid, text) => dispatch(SaveAnswer(postid, text)),
+        getanswers : (postid, limit) => dispatch(GetAnswers(postid, limit))
     }
 }
