@@ -13,8 +13,6 @@ return dispatch => {
     MentionsRequest
         .getUsers(searchkey, limit) 
         .then(users => {
-            // console.log(searchkey);
-            // console.log(users.data.data);
             return dispatch ({
                 type    : MentionsActionTypes.MENTIONS_LOADED,
                 payload : {
@@ -48,7 +46,6 @@ return dispatch => {
     MentionsRequest
         .getAnswers(post_id, limit) 
         .then(answers => {
-            // console.log(answers);
             return dispatch ({
                 type    : MentionsActionTypes.GET_ANS_LOADED,
                 payload : {
@@ -71,7 +68,7 @@ return dispatch => {
 }
 
 
-export const SaveAnswer = (post, text) => {
+export const SaveAnswer = (post_id, text, limit) => {
 
 return dispatch => {
 
@@ -81,17 +78,36 @@ return dispatch => {
     })
 
     MentionsRequest
-        .saveAnswer(post, text) 
+        .saveAnswer(post_id, text) 
         .then(savedanswer => {
-            console.log(savedanswer);
-            return dispatch ({
-                type    : MentionsActionTypes.SAVE_ANS_LOADED,
-                payload : {
-                    type:"saveanswer",
-                    text: savedanswer.data.text
-                }
+            MentionsRequest
+                .getAnswers(post_id, limit) 
+                    .then(answers => {
+                        return dispatch ({
+                            type    : MentionsActionTypes.GET_ANS_LOADED,
+                            payload : {
+                                type:"getanswers",
+                                data: answers.data.data
+                            }
+                        })
+                    })
+                    .catch(err => {
+                        return dispatch({
+                            type:    MentionsActionTypes.GET_ANS_ERROR,
+                            payload: {
+                                type:"getanswers",
+                                error: err.response
+                            }
+                        })
+                    })
+                return dispatch ({
+                    type    : MentionsActionTypes.SAVE_ANS_LOADED,
+                    payload : {
+                        type:"saveanswer",
+                        text: savedanswer.data.text
+                    }
+                })
             })
-        })
         .catch(err => {
             return dispatch({
                 type:    MentionsActionTypes.SAVE_ANS_ERROR,

@@ -16,7 +16,7 @@ import Mentions from "./Common/Mentions";
 
 // import Pricing from "./Pricing";
 // import PendingInvitation from "./PendingInvitation";
-import UploadImage from "./UploadImage/UploadImage";
+// import UploadImage from "./UploadImage/UploadImage";
 
 const Routes = () => {
 

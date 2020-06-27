@@ -1,7 +1,7 @@
 .mentions {
   margin: 1em 0;
-  /* min-height: 50px;
-  border: inset; */
+  min-height: 50px;
+  border: inset;
 }
 
 .mentions--singleLine .mentions__control {
@@ -29,8 +29,4 @@
 
 .mentions__suggestions__item--focused {
   background-color: #bae675;
-}
-
-.mentions__mention {
-  /* background-color: #bae675; */
 }

@@ -9,7 +9,7 @@ export const MapStateToProps = state => {
 export const MapDispatchToProps = dispatch => {
     return {
         userslist  : (name, limit) => dispatch(GetUsers(name, limit)),
-        saveanswer : (postid, text) => dispatch(SaveAnswer(postid, text)),
+        saveanswer : (postid, text, limit) => dispatch(SaveAnswer(postid, text, limit)),
         getanswers : (postid, limit) => dispatch(GetAnswers(postid, limit))
     }
 }
