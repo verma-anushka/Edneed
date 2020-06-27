@@ -50,7 +50,7 @@ export default (
                 ...state,
                 [payload.type]:{
                     ...state[payload.type],
-                    loadingmore: payload.status
+                    error: payload.error
                 }
             })  
 
@@ -78,7 +78,7 @@ export default (
                 ...state,
                 [payload.type]:{
                     ...state[payload.type],
-                    loadingmore: payload.status
+                    error: payload.error
                 }
             })  
 
@@ -106,7 +106,7 @@ export default (
                 ...state,
                 [payload.type]:{
                     ...state[payload.type],
-                    loadingmore: payload.status
+                    error: payload.error
                 }
             })  
 
