@@ -3,7 +3,9 @@ import { Switch, Route } from "react-router-dom";
 
 // components
 
-import Mentions from "./Common/Mentions";
+import PageAccess from "./PageAccess";
+
+// import Mentions from "./Common/Mentions";
 
 // import Rating from "./Common/Rating";
 // import Report from "./Report";
@@ -25,7 +27,8 @@ const Routes = () => {
 
             <Switch>
 
-                <Route exact path="/" component={ Mentions } />
+                <Route exact path="/" component={ PageAccess } />
+                {/* <Route exact path="/" component={ Mentions } /> */}
                 {/* <Route exact path="/" component={ Rating } /> */}
                 {/* <Route exact path="/report" component={ Report } /> */}
                 {/* <Route exact path="/settings" component={ AccountSettings } /> */}
@@ -35,6 +38,7 @@ const Routes = () => {
                 {/* <Route exact path="/pricing" component={Pricing} /> */}
                 {/* <Route exact path="/invitation" component={PendingInvitation} /> */}
                 {/* <Route exact path="/image-upload" component={UploadImage} /> */}
+                
             </Switch>
         </div>
     );

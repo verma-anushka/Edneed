@@ -9,7 +9,8 @@ import { combineReducers } from "redux";
 // import accountSettingsReducer from "./accountSettings";
 // import reportReducer from "./report";
 // import ratingReducer from "./rating";
-import mentionsReducer from "./mentions";
+// import mentionsReducer from "./mentions";
+import pageaccessReducer from "./pageaccess";
 
 
 export default combineReducers({
@@ -22,7 +23,8 @@ export default combineReducers({
     // applications: applicationsReducer,
     // accountSettings: accountSettingsReducer,
     // report: reportReducer,
-    users: mentionsReducer
+    // users: mentionsReducer,
+    pageaccess: pageaccessReducer
 
 });
 
