@@ -1,11 +1,7 @@
 import { PageAccessActionTypes } from "../actions/pageAccess/actionTypes";
 
 const PAGE_ACCESS_INITIAL_STATE = {
-    users: {
-        loading : false,
-        data    : [],
-        error   : ""
-    },
+
     roles: {
         loading : false,
         data    : [],
@@ -13,7 +9,7 @@ const PAGE_ACCESS_INITIAL_STATE = {
     },
     pageaccess: {
         loading : false,
-        messgae : ""
+        message : ""
     }
 }
 
@@ -22,37 +18,6 @@ export default (
         { type, payload }
     ) => {
     switch (type) {
-        
-        case PageAccessActionTypes.USER_LIST_LOADING:
-            return({
-                ...state,
-                [payload.type]: {
-                    ...state[payload.type],
-                    loading: payload.status
-                }
-            })
-
-        case PageAccessActionTypes.USER_LIST_LOADED:
-
-            // console.log(payload);
-            
-            return ({
-                ...state,
-                [payload.type]:{
-                    ...state[payload.type],
-                    loading : false,
-                    data    : payload.data
-                }
-            })     
-
-        case PageAccessActionTypes.USER_LIST_ERROR:
-            return ({
-                ...state,
-                [payload.type]:{
-                    ...state[payload.type],
-                    error: payload.error
-                }
-            })  
 
         case PageAccessActionTypes.PAGE_ROLE_LOADING:
             return({
@@ -78,7 +43,8 @@ export default (
                 ...state,
                 [payload.type]:{
                     ...state[payload.type],
-                    error: payload.error
+                    loading : false,
+                    error   : payload.error
                 }
             })  
 
@@ -106,7 +72,8 @@ export default (
                 ...state,
                 [payload.type]:{
                     ...state[payload.type],
-                    message: payload.error
+                    loading : false,
+                    message : payload.error
                 }
             })  
 

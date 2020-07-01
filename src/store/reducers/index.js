@@ -11,6 +11,7 @@ import { combineReducers } from "redux";
 // import ratingReducer from "./rating";
 // import mentionsReducer from "./mentions";
 import pageaccessReducer from "./pageaccess";
+import searchUsersReducer from "./searchUsers";
 
 
 export default combineReducers({
@@ -24,7 +25,8 @@ export default combineReducers({
     // accountSettings: accountSettingsReducer,
     // report: reportReducer,
     // users: mentionsReducer,
-    pageaccess: pageaccessReducer
+    pageaccess: pageaccessReducer,
+    users: searchUsersReducer
 
 });
 
