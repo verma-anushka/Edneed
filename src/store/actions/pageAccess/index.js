@@ -1,45 +1,6 @@
 import PageAccessRequest from "./pageAccessRequest";
 import { PageAccessActionTypes } from "./actionTypes";
 
-export const GetUsers = (limit) => {
-
-return dispatch => {
-
-    dispatch({
-        type    : PageAccessActionTypes.USER_LIST_LOADING,
-        payload : { 
-            type:"users", 
-            status: true 
-        }
-    })
-
-    PageAccessRequest
-        .getUsers(limit) 
-        .then(users => {
-            // console.log(users);
-            
-            return dispatch ({
-                type    : PageAccessActionTypes.USER_LIST_LOADED,
-                payload : {
-                    type:"users",
-                    data: users.data.data
-                }
-            })
-        })
-        .catch(err => {
-            return dispatch({
-                type:    PageAccessActionTypes.USER_LIST_ERROR,
-                payload: {
-                    type:"users",
-                    error: err.response
-                }
-            })
-        })
-}
-
-}
-
-
 export const GetRoles = (limit) => {
 
 return dispatch => {
@@ -55,13 +16,11 @@ return dispatch => {
     PageAccessRequest
         .getRoles(limit) 
         .then(roles => {
-            // console.log(roles);
-            
             return dispatch ({
                 type    : PageAccessActionTypes.PAGE_ROLE_LOADED,
                 payload : {
-                    type:"roles",
-                    data: roles.data.data
+                    type    : "roles",
+                    data    : roles.data.data
                 }
             })
         })
@@ -69,8 +28,8 @@ return dispatch => {
             return dispatch({
                 type:    PageAccessActionTypes.PAGE_ROLE_ERROR,
                 payload: {
-                    type:"roles",
-                    error: err.response
+                    type    :"roles",
+                    error   : err.response
                 }
             })
         })
@@ -85,21 +44,19 @@ return dispatch => {
     dispatch({
         type    : PageAccessActionTypes.ACCESS_REQ_LOADING,
         payload : { 
-            type:"pageaccess", 
-            status: true 
+            type    :"pageaccess", 
+            status  : true 
         }
     })
 
     PageAccessRequest
         .grantAccess(newaccessrequest) 
         .then(res => {
-            // console.log(res);
-            
             return dispatch ({
                 type    : PageAccessActionTypes.ACCESS_REQ_LOADED,
                 payload : {
-                    type:"pageaccess",
-                    success: "Access Granted!"
+                    type    :"pageaccess",
+                    success : "Access Granted!"
                 }
             })
         })
@@ -107,8 +64,8 @@ return dispatch => {
             return dispatch({
                 type:    PageAccessActionTypes.ACCESS_REQ_ERROR,
                 payload: {
-                    type:"pageaccess",
-                    error: "Access Denied!"
+                    type    :"pageaccess",
+                    error   : "Access Denied!"
                 }
             })
         })
