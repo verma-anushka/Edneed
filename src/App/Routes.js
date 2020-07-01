@@ -3,14 +3,15 @@ import { Switch, Route } from "react-router-dom";
 
 // components
 
-import PageAccess from "./PageAccess";
+import ApproveRoles from "./ApproveRoles";
+
+// import PageAccess from "./PageAccess";
 
 // import Mentions from "./Common/Mentions";
-
 // import Rating from "./Common/Rating";
+
 // import Report from "./Report";
 // import AccountSettings from "./AccountSettings";
-
 // import Applications from "./Applications";
 
 // import FollowedQuestions from "./Questions/FollowedQuestions";
@@ -27,9 +28,10 @@ const Routes = () => {
 
             <Switch>
 
-                <Route exact path="/" component={ PageAccess } />
-                {/* <Route exact path="/" component={ Mentions } /> */}
-                {/* <Route exact path="/" component={ Rating } /> */}
+                <Route exact path="/" component={ ApproveRoles } />
+                {/* <Route exact path="/pageaccess" component={ PageAccess } /> */}
+                {/* <Route exact path="/mentions" component={ Mentions } /> */}
+                {/* <Route exact path="/rating" component={ Rating } /> */}
                 {/* <Route exact path="/report" component={ Report } /> */}
                 {/* <Route exact path="/settings" component={ AccountSettings } /> */}
                 {/* <Route exact path="/applications" component={ Applications } /> */}
