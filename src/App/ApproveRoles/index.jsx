@@ -1,3 +1,3 @@
-import ApproveRolesList from "./ApproveRolesCard";
+import ApproveRolesList from "./ApproveRolesList";
 
 export default ApproveRolesList;

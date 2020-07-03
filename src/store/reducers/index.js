@@ -10,8 +10,9 @@ import { combineReducers } from "redux";
 // import reportReducer from "./report";
 // import ratingReducer from "./rating";
 // import mentionsReducer from "./mentions";
-import pageaccessReducer from "./pageaccess";
-import searchUsersReducer from "./searchUsers";
+// import pageaccessReducer from "./pageaccess";
+// import searchUsersReducer from "./searchUsers";
+import rolesreqReducer from "./approveRoles";
 
 
 export default combineReducers({
@@ -25,8 +26,9 @@ export default combineReducers({
     // accountSettings: accountSettingsReducer,
     // report: reportReducer,
     // users: mentionsReducer,
-    pageaccess: pageaccessReducer,
-    users: searchUsersReducer
+    // pageaccess: pageaccessReducer,
+    // users: searchUsersReducer,
+    rolesreq: rolesreqReducer
 
 });
 
