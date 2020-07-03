@@ -1,0 +1,8 @@
+
+export const UserRolesActionTypes = {
+
+    USER_ROLES_LOADING : "USER_ROLES_LOADING",
+    USER_ROLES_LOADED  : "USER_ROLES_LOADED",
+    USER_ROLES_ERROR   : "USER_ROLES_ERROR"
+
+}

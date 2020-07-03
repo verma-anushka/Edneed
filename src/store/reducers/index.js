@@ -12,7 +12,8 @@ import { combineReducers } from "redux";
 // import mentionsReducer from "./mentions";
 // import pageaccessReducer from "./pageaccess";
 // import searchUsersReducer from "./searchUsers";
-import rolesreqReducer from "./approveRoles";
+// import rolesreqReducer from "./approveRoles";
+import userRolesReducer from "./userRoles";
 
 
 export default combineReducers({
@@ -28,7 +29,8 @@ export default combineReducers({
     // users: mentionsReducer,
     // pageaccess: pageaccessReducer,
     // users: searchUsersReducer,
-    rolesreq: rolesreqReducer
+    // rolesreq: rolesreqReducer,
+    userroles: userRolesReducer
 
 });
 

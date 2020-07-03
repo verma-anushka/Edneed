@@ -2,9 +2,9 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 
 // components
+import SwitchAccount from "./Common/SwitchAccount";
 
-import ApproveRoles from "./ApproveRoles";
-
+// import ApproveRoles from "./ApproveRoles";
 // import PageAccess from "./PageAccess";
 
 // import Mentions from "./Common/Mentions";
@@ -28,7 +28,8 @@ const Routes = () => {
 
             <Switch>
 
-                <Route exact path="/" component={ ApproveRoles } />
+                <Route exact path="/" component={ SwitchAccount } />
+                {/* <Route exact path="/approveroles" component={ ApproveRoles } /> */}
                 {/* <Route exact path="/pageaccess" component={ PageAccess } /> */}
                 {/* <Route exact path="/mentions" component={ Mentions } /> */}
                 {/* <Route exact path="/rating" component={ Rating } /> */}
