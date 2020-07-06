@@ -2,7 +2,7 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 
 // components
-import SwitchAccount from "./Common/SwitchAccount";
+import SwitchAccount from "../App/Common/SwitchAccount";
 
 // import ApproveRoles from "./ApproveRoles";
 // import PageAccess from "./PageAccess";

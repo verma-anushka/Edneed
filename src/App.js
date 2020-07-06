@@ -3,7 +3,7 @@ import { configureStore } from "./store";
 import { Provider } from "react-redux";
 import { BrowserRouter } from 'react-router-dom';
 
-import Routes from "./App/Routes";
+import Routes from "./AppRouting";
 
 const store = configureStore();
 const App = () => {
