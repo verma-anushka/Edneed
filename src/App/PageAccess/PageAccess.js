@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Button, Container, Spinner } from "react-bootstrap";
 import { connect } from "react-redux";
 
-import SearchUsers from "../Common/SearchUsers";
+import SearchUsers from "../../Common/SearchUsers";
 import PageRoles from "./PageRoles";
 import { MapStateToProps, MapDispatchToProps } from "./PageAccessMapDispatch";
 
@@ -14,11 +14,12 @@ class PageAccess extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedUser: {
-                value: "",
-                label: ""
-            },
-            selectedRoleId: "5ef0f970d185d647e7a091cf" //by default: EdNeed User
+            selectedUserId: "",
+            selectedRoleId: "" ,
+            errors: {
+                user: "",
+                role: ""
+            }
         }
     }
 
@@ -26,30 +27,52 @@ class PageAccess extends Component {
         this.setState({ [e.target.name] :e.target.value });
     }
 
-    onSearchUserChange = (selectedUser) => {
-		if (selectedUser) {
-			this.setState({ selectedUser });
-		}
-	};
-
     accessRequest = () => {
-        const newaccessrequest = {
-            kind,
-            role:this.state.selectedRoleId, 
-            owner:this.state.selectedUser.value,
-            ref    
+
+        const { selectedRoleId, selectedUserId } = this.state;
+
+        if (selectedUserId === '') {
+
+            this.setState(prevState => ({
+                errors: {
+                    ...prevState.errors,
+                    user: 'Please select a user!'
+                }
+            }));
+        } 
+        if (selectedRoleId === '') {
+            this.setState(prevState => ({
+                errors: {
+                    ...prevState.errors,
+                    role: 'Please select a role!'
+                }
+            }));
+        } 
+        if(selectedUserId !== '' && selectedRoleId !== '') {
+            this.setState({ errors: {}});
+            const newaccessrequest = {
+                kind:"pageaccess",
+                role:this.state.selectedRoleId, 
+                user:this.state.selectedUserId,
+                owner:"5ecb9ed670e1ef395d63113a",
+                ref,
+                approved:true
+            }  
+            this.props.grantAccess(newaccessrequest);
         }
-        this.props.grantAccess(newaccessrequest);
     }
 
     render() {
-
         const { pageaccess } = this.props.pageaccess;
-        
         return (
             <Container>
-                <SearchUsers handleChange={this.onSearchUserChange} selectedUser={this.state.selectedUser} />
+                
+                <SearchUsers onSelect={selectedOption => this.setState({ selectedUserId: selectedOption })} />
+                { this.state.errors.user && <div style={{ color:"red" }} className="mt-0 text-center"> {this.state.errors.user} </div> }
+                
                 <PageRoles handleChange={this.onInputChange} selectedRoleId={this.state.selectedRoleId} />
+                { this.state.errors.role && <div style={{ color:"red" }} className="mt-0 mb-3 text-center"> {this.state.errors.role} </div> }
+                
                 { 
                     pageaccess.loading ? 
                         <div className="text-center">

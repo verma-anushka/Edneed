@@ -65,7 +65,7 @@ return dispatch => {
                 type:    PageAccessActionTypes.ACCESS_REQ_ERROR,
                 payload: {
                     type    :"pageaccess",
-                    error   : "Access Denied!"
+                    error   : err.response.data.message
                 }
             })
         })

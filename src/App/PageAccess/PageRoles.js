@@ -13,9 +13,7 @@ class PageRoles extends Component {
     }
 
     render() {
-        
-        const { roles } = this.props.pageaccess 
-
+        const { roles } = this.props.pageaccess;
         return (
             <Form className="mb-3" >
                 <Form.Label>Select Role:</Form.Label>
@@ -29,7 +27,6 @@ class PageRoles extends Component {
                     }
                 </Form.Control>
             </Form>
-
         )
     }
    

@@ -1,63 +1,97 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, Fragment } from "react";
+import { Form, Spinner, ListGroup, ListGroupItem} from "react-bootstrap";
+
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import AsyncSelect from 'react-select/async';
 
-import { SearchUsers as SearchUsersAction } from "../../../store/actions/searchUsers";
+import { SearchUsers as SearchUsersAction } from "../../store/actions/searchUsers";
 
+import dummy from "../../assets/images/dummy_cover_photo.jpg";
+
+let typing, inputValue;
 const curruserid="5ecb9ed670e1ef395d63113a";
 const limit=20;
 
 class SearchUsers extends Component {
 
-	fetchData = (inputValue, callback) => {
-
-		if (!inputValue) {
-			callback([]);
-		} else {
-			setTimeout(() => {
-				this.props.searchUsers(inputValue, curruserid, limit )
-				const users = this.props.usersState 
-				if(users.data.length){
-					const options = users.data.map((userItem, userIndex) => {
-										return {
-											value:`${userItem._id}`, label:`${userItem.fullName}`
-										}
-									})
-					callback(options);            
-				}	
-			});
+	constructor(props) {
+		super(props);
+		this.state = {
+			text: '',
+			selected: false
 		}
 	}
 
-	render() {
+    selectOption = (selectedUserId, name) => {
+        document.getElementById('search_user_input').value = name;
+        this.setState({
+			text: name,
+			selected: true
+		})
+        this.props.onSelect(selectedUserId);
+    }
 
-		return ( 
-			<Fragment  >
-				<>Select User:</>
-				<AsyncSelect
-					name="selectedUser"
-					value={this.props.selectedUser}
-					loadOptions={this.fetchData}
-					placeholder="Search user..."
-					onChange={(e) => { this.props.handleChange(e) }}
-					defaultOptions={false}
-					className="mb-3"
-				/>
-			</Fragment>
-		)
-	}
+    handleHeaderSearchInput = e => {
 
-}
+        inputValue = e.target.value 
+		this.setState({ text: inputValue })
 
-SearchUsers.defaultProps = {
-    selectedUser : undefined,
-	handleChange: undefined
-}
+        if(inputValue === ""){
+            this.props.onSelect("");
+        }
 
-SearchUsers.propTypes = {
-	selectedUser: PropTypes.object.isRequired,
-    handleChange: PropTypes.func.isRequired
+        clearTimeout(typing);
+        typing = setTimeout(() => {
+			this.props.searchUsers(inputValue, curruserid, limit);
+        }, 800)
+
+        if (!inputValue) {
+            clearTimeout(typing)
+        }
+    }
+
+	render () {
+		const users = this.props.usersState;
+		return (<Fragment>	
+					<Form.Label>Select User:</Form.Label>
+					<Form.Control 
+						type="text" 
+						autoComplete={false} 
+						className="mb-3" 
+						id="search_user_input" 
+						placeholder="Search Users" 
+						onKeyUp={(e)=>this.handleHeaderSearchInput(e)} 
+						onFocus={()=>this.setState({ selected: false })} 
+					/>
+					{
+						(!this.state.selected && this.state.text) && <ListGroup className="mt-0" style={{height:200, overflow:"scroll"}}>
+						{
+							users.loading ?
+								<ListGroupItem className="text-center">
+									<Spinner animation="border" variant="success" />
+								</ListGroupItem>
+								:
+							users.data.length>0 ?
+								users.data.map(dataItem => {
+									return <ListGroupItem style={{ cursor:"pointer" }} onClick={()=>this.selectOption(dataItem._id, dataItem.fullName)}>
+												{
+													dataItem.photo ?
+														<img style={{ width:"25px", height:"25px", borderRadius:"50%" }} src={`https://api.webunide.com/fs${dataItem.photo}`} alt={dataItem.fullName} />
+														:
+														<img style={{ width:"25px", height:"25px", borderRadius:"50%" }} src={dummy} alt={dataItem.fullName} />
+												}
+												{" "}
+												{dataItem.fullName}
+											</ListGroupItem>
+								})
+								:
+								inputValue && <ListGroupItem>No such user exists!</ListGroupItem>
+						}
+						</ListGroup>
+					}
+				</Fragment>
+		);
+	}	
 }
 
 export const MapStateToProps = state => {

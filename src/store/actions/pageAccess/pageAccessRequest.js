@@ -4,7 +4,7 @@ class PageAccessRequest {
 
     getRoles = (limit, skip=0) => {
         return axios.get(
-            `https://api.webunide.com/role?kind=normal`,
+            `https://api.webunide.com/role?kind=pageaccess`,
             {
                 headers: {
                     'Content-Type': 'application/json',
